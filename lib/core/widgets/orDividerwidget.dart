@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:bokiaa/core/utils/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';

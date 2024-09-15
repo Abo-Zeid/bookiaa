@@ -2,7 +2,7 @@ import 'package:bokiaa/core/functions/navigation.dart';
 import 'package:bokiaa/core/utils/appcolors.dart';
 import 'package:bokiaa/core/utils/text_style.dart';
 import 'package:bokiaa/core/widgets/custom_button.dart';
-import 'package:bokiaa/feature/auth/presentation/cheackout_view.dart';
+import 'package:bokiaa/feature/cart/presentation/page/cheackout_view.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -162,7 +162,9 @@ class _CartViewState extends State<CartView> {
               ),
               CustomButton(
                 text: "Checkout",
-                onPressed: () {push(context, const CheackoutView());},
+                onPressed: () {
+                  push(context, const CheackoutView());
+                },
               )
             ],
           ),

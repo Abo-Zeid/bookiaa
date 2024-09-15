@@ -24,4 +24,4 @@ class AppTextStyle {
         fontWeight: fontWeight ?? FontWeight.normal,
         color: color ?? Theme.of(context).colorScheme.onSurface);
   }
-} 
+}

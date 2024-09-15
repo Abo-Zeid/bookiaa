@@ -116,6 +116,7 @@ class _HomeViewState extends State<HomeView> {
                       childAspectRatio: 163 / 281,
                     ),
                     itemCount: 4,
+                    // ignore: avoid_types_as_parameter_names
                     itemBuilder: (context, int) {
                       return const PopularBookWidget();
                     }),

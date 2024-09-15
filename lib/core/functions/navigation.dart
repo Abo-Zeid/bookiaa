@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
-pushReplacement(context, Widget newScreen,) {
+pushReplacement(
+  context,
+  Widget newScreen,
+) {
   Navigator.of(context)
       .pushReplacement(MaterialPageRoute(builder: (context) => newScreen));
 }

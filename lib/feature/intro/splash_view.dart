@@ -18,6 +18,7 @@ class _SplashView extends State<SplashView> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 3), () {
+      // ignore: use_build_context_synchronously
       pushReplacement(context, const WelcomeView());
     });
   }

@@ -66,7 +66,7 @@ class _NavBarWidgetState extends State<NavBarWidget> {
               activeIcon: SvgPicture.asset(
                 AssetsIcon.profileSvg,
                 colorFilter:
-                    ColorFilter.mode(Appcolors.primaryColor, BlendMode.srcIn),                            
+                    ColorFilter.mode(Appcolors.primaryColor, BlendMode.srcIn),
               ),
               label: "home")
         ],
