@@ -1,10 +1,15 @@
+import 'package:bokiaa/core/services/dio_provider.dart';
+import 'package:bokiaa/core/services/local_storage.dart';
 import 'package:bokiaa/core/utils/theme.dart';
 import 'package:bokiaa/feature/auth/presentation/bloc/auth_bloc.dart';
 import 'package:bokiaa/feature/intro/splash_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await DioProvider.init();
+  await AppLocalStorage.init();
   runApp(const MainApp());
 }
 

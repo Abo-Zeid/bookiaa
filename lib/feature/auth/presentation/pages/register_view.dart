@@ -2,6 +2,7 @@ import 'package:bokiaa/core/constant/assets_icon.dart';
 import 'package:bokiaa/core/functions/dialogs.dart';
 import 'package:bokiaa/core/functions/navigation.dart';
 import 'package:bokiaa/core/utils/appcolors.dart';
+import 'package:bokiaa/core/widgets/back_card_widget.dart';
 import 'package:bokiaa/core/widgets/custom_button.dart';
 import 'package:bokiaa/core/utils/text_style.dart';
 import 'package:bokiaa/core/widgets/nav_bar_widget.dart';
@@ -10,8 +11,6 @@ import 'package:bokiaa/feature/auth/presentation/bloc/auth_bloc.dart';
 import 'package:bokiaa/feature/auth/presentation/bloc/auth_event.dart';
 import 'package:bokiaa/feature/auth/presentation/bloc/auth_state.dart';
 import 'package:bokiaa/feature/auth/presentation/pages/login_view.dart';
-import 'package:bokiaa/core/widgets/SocialButtonCard.dart';
-import 'package:bokiaa/core/widgets/orDividerwidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -49,24 +48,8 @@ class _RegisterViewState extends State<RegisterView> {
           child: Scaffold(
             appBar: AppBar(
                 automaticallyImplyLeading: false,
-                title: Row(
-                  children: [
-                    Container(
-                      width: 41,
-                      height: 41,
-                      padding: const EdgeInsets.only(right: 3),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: Appcolors.borderColor)),
-                      child: IconButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        icon: const Icon(Icons.arrow_back_ios_rounded),
-                        iconSize: 20,
-                      ),
-                    )
-                  ],
+                title: const Row(
+                  children: [BackCardWidget()],
                 )),
             bottomNavigationBar: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -190,33 +173,27 @@ class _RegisterViewState extends State<RegisterView> {
                     ),
                     const Gap(15),
                     Center(
-                      child:
-                           state is RegisterLoadingState
-                              ? const CircularProgressIndicator()
-                              :
-                          CustomButton(
-                        onPressed: () {
-                          if (formkey.currentState!.validate()) {
-                            context.read<AuthBloc>().add(RegisterEvent(
-                                RegisterParams(
-                                    name: nameController.text,
-                                    email: emailController.text,
-                                    password: passwordController.text,
-                                    passwordConfirmation:
-                                        passwordConfirmationController.text)));
-                          }
-                        },
-                        color: Appcolors.primaryColor,
-                        textColor: Appcolors.backGroundColor,
-                        text: "Register",
-                      ),
+                      child: state is RegisterLoadingState
+                          ? const CircularProgressIndicator()
+                          : CustomButton(
+                              onPressed: () {
+                                if (formkey.currentState!.validate()) {
+                                  context.read<AuthBloc>().add(RegisterEvent(
+                                      RegisterParams(
+                                          name: nameController.text,
+                                          email: emailController.text,
+                                          password: passwordController.text,
+                                          passwordConfirmation:
+                                              passwordConfirmationController
+                                                  .text)));
+                                }
+                              },
+                              color: Appcolors.primaryColor,
+                              textColor: Appcolors.backGroundColor,
+                              text: "Register",
+                            ),
                     ),
                     const Gap(15),
-                    const OrDividerWidget(
-                      text: "Or Register With",
-                    ),
-                    const Gap(20),
-                    const SocialButtonCard(),
                   ],
                 ),
               ),

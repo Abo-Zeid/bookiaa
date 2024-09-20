@@ -1,5 +1,6 @@
 import 'package:bokiaa/core/functions/navigation.dart';
 import 'package:bokiaa/core/utils/appcolors.dart';
+import 'package:bokiaa/core/widgets/back_card_widget.dart';
 import 'package:bokiaa/core/widgets/custom_button.dart';
 import 'package:bokiaa/core/utils/text_style.dart';
 import 'package:bokiaa/feature/auth/presentation/pages/succses.dart';
@@ -20,24 +21,8 @@ class _CreatePasswordState extends State<CreatePassword> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
           automaticallyImplyLeading: false,
-          title: Row(
-            children: [
-              Container(
-                width: 41,
-                height: 41,
-                padding: const EdgeInsets.only(right: 3),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: Appcolors.borderColor)),
-                child: IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(Icons.arrow_back_ios_rounded),
-                  iconSize: 20,
-                ),
-              )
-            ],
+          title: const Row(
+            children: [BackCardWidget()],
           )),
       body: Padding(
         padding: const EdgeInsets.all(20.0),

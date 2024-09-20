@@ -36,7 +36,8 @@ class CheackoutView extends StatelessWidget {
                 "Checkout",
                 style: AppTextStyle.getTtileTextStyle(context),
               ),
-              const Spacer()
+              const Spacer(),
+              const Gap(41)
             ],
           )),
       body: SingleChildScrollView(

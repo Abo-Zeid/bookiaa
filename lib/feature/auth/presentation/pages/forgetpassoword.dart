@@ -1,3 +1,4 @@
+import 'package:bokiaa/core/widgets/back_card_widget.dart';
 import 'package:bokiaa/feature/auth/presentation/pages/login_view.dart';
 import 'package:bokiaa/feature/auth/presentation/pages/otp_view.dart';
 import 'package:bokiaa/core/functions/navigation.dart';
@@ -21,24 +22,8 @@ class _ForgetpassowordState extends State<Forgetpassoword> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
           automaticallyImplyLeading: false,
-          title: Row(
-            children: [
-              Container(
-                width: 41,
-                height: 41,
-                padding: const EdgeInsets.only(right: 3),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: Appcolors.borderColor)),
-                child: IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(Icons.arrow_back_ios_rounded),
-                  iconSize: 20,
-                ),
-              )
-            ],
+          title: const Row(
+            children: [BackCardWidget()],
           )),
       bottomNavigationBar: Row(
         mainAxisAlignment: MainAxisAlignment.center,

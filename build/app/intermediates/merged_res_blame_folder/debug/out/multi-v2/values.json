@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.bokiaa.app-mergeDebugResources-25:/values/values.xml",
+            "outputFile": "com.example.bokiaa.app-mergeDebugResources-27:/values/values.xml",
             "map": [
                 {
                     "source": "C:\\Users\\DELL\\.gradle\\caches\\transforms-3\\4ee1d1c3643bd699aea17aa2adbcb7ee\\transformed\\jetified-startup-runtime-1.1.1\\res\\values\\values.xml",

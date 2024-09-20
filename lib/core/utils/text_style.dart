@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 
 class AppTextStyle {
+  static getHeadlineTextStyle(context,
+      {double fontSize = 30, fontWeight = FontWeight.normal, Color? color}) {
+    return TextStyle(
+      fontSize: fontSize,
+      fontWeight: fontWeight,
+      color: color ?? Theme.of(context).colorScheme.onSurface,
+    );
+  }
+
   static getTtileTextStyle(BuildContext context,
       {double? fontSize, FontWeight? fontWeight, Color? color}) {
     return TextStyle(
@@ -21,7 +30,7 @@ class AppTextStyle {
       {double? fontSize, FontWeight? fontWeight, Color? color}) {
     return TextStyle(
         fontSize: fontSize ?? 14,
-        fontWeight: fontWeight ?? FontWeight.normal,
+        fontWeight: fontWeight ?? FontWeight.w100,
         color: color ?? Theme.of(context).colorScheme.onSurface);
   }
 }
