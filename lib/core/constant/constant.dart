@@ -8,7 +8,21 @@ class AppConstants {
   //Home
   static const String getBestSellerEndPoint = '/products-bestseller';
   static const String getHomeBannerEndPoint = '/sliders';
-  //Profile
-    static const String getProfileEndPoint = '/profile';
 
+  //WishList
+  static const String addToWishListEndpoint = '/add-to-wishlist';
+  static const String removeFromWishListEndpoint = '/remove-from-wishlist';
+  static const String getWishListEndpoint = '/wishlist';
+
+  //Cart
+  static const String addToCartEndpoint = '/add-to-cart';
+  static const String removeFromCartEndpoint = '/remove-from-cart';
+  static const String getCartEndpoint = '/cart';
+  static const String updateToCartEndpoint = '/update-cart';
+
+  //Search
+  static const String getSearchEndPoint = '/products-search';
+
+  //Profile
+  static const String getProfileEndPoint = '/profile';
 }

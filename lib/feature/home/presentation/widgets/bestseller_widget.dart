@@ -3,25 +3,37 @@ import 'package:bokiaa/core/utils/appcolors.dart';
 import 'package:bokiaa/core/utils/text_style.dart';
 import 'package:bokiaa/core/widgets/custom_button.dart';
 import 'package:bokiaa/feature/home/presentation/bloc/home_bloc.dart';
+import 'package:bokiaa/feature/home/presentation/bloc/home_event.dart';
 import 'package:bokiaa/feature/home/presentation/bloc/home_state.dart';
-import 'package:bokiaa/feature/home/presentation/page/book_detail_view.dart';
+import 'package:bokiaa/feature/home/presentation/page/bookDetails/book_detail_view.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:lottie/lottie.dart';
 
-class BestSellerBooksWidget extends StatelessWidget {
+class BestSellerBooksWidget extends StatefulWidget {
   const BestSellerBooksWidget({
     super.key,
   });
+
+  @override
+  State<BestSellerBooksWidget> createState() => _BestSellerBooksWidgetState();
+}
+
+class _BestSellerBooksWidgetState extends State<BestSellerBooksWidget> {
+  @override
+  void initState() {
+    context.read<HomeBloc>().add(GetBestSellerEvent());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeState>(
         buildWhen: (previous, current) =>
             current is BestSellerLoadedState ||
-            current is HomeBannerLoadedState,
+            current is BestSellerLoadingState,
         builder: (context, state) {
           if (state is BestSellerLoadedState) {
             var books = context.read<HomeBloc>().bestSellerResponseModel?.data;

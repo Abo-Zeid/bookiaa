@@ -1,5 +1,6 @@
 import 'package:bokiaa/core/utils/appcolors.dart';
 import 'package:bokiaa/feature/home/presentation/bloc/home_bloc.dart';
+import 'package:bokiaa/feature/home/presentation/bloc/home_event.dart';
 import 'package:bokiaa/feature/home/presentation/bloc/home_state.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -18,13 +19,18 @@ class HomeBannerWidget extends StatefulWidget {
 
 class _HomeBannerWidgetState extends State<HomeBannerWidget> {
   int selectedBanner = 0;
+  @override
+  void initState() {
+    context.read<HomeBloc>().add(GetHomeBannerEvent());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeState>(
         buildWhen: (previous, current) =>
             current is HomeBannerLoadedState ||
-            current is BestSellerLoadedState,
+            current is HomeBannerLoadingState,
         builder: (context, state) {
           if (state is HomeBannerLoadedState) {
             var banner = context.read<HomeBloc>().homeBannerResponseModel?.data;
@@ -34,24 +40,15 @@ class _HomeBannerWidgetState extends State<HomeBannerWidget> {
                     itemCount: banner?.sliders?.length,
                     itemBuilder:
                         (BuildContext context, int index, int pageViewIndex) =>
-                            Stack(children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: CachedNetworkImage(
-                                  imageUrl: banner?.sliders?[index].image ?? "",
-                                  fit: BoxFit.cover,
-                                  height: 150,
-                                  width: double.infinity,
-                                ),
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: CachedNetworkImage(
+                                imageUrl: banner?.sliders?[index].image ?? "",
+                                fit: BoxFit.cover,
+                                height: 150,
+                                width: double.infinity,
                               ),
-                              const Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: const Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [],
-                                ),
-                              )
-                            ]),
+                            ),
                     options: CarouselOptions(
                       height: 150,
                       viewportFraction: 1,

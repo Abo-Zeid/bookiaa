@@ -2,10 +2,17 @@ import 'package:bokiaa/core/utils/appcolors.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-showeErrorDialog(BuildContext context, String text) {
+showeErrorDialog(BuildContext context) {
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
     backgroundColor: Appcolors.redColor,
-    content: Text(text),
+    content: const Text("Error"),
+  ));
+}
+
+showeSuccesDialog(BuildContext context) {
+  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+    backgroundColor: Appcolors.primaryColor,
+    content: const Text("Succes"),
   ));
 }
 

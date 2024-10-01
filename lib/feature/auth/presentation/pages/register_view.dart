@@ -39,7 +39,7 @@ class _RegisterViewState extends State<RegisterView> {
         if (state is RegisterSuccesState) {
           pushReplacement(context, const NavBarWidget());
         } else if (state is RegisterErrorState) {
-          showeErrorDialog(context, state.error);
+          showeErrorDialog(context);
         }
       },
       builder: (context, state) {

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bokiaa/feature/profile/data/models/profile_response_model/profile_response_model.dart';
 import 'package:bokiaa/feature/profile/data/repo/profile_repo.dart';
 import 'package:bokiaa/feature/profile/presentation/bloc/profile_event.dart';
@@ -15,13 +17,17 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   Future<void> getProfileDetails(
       GetProfileDetailsEvent event, Emitter<ProfileState> emit) async {
     emit(ProfileLoadingState());
-    ProfileRepo.getProfileDetails().then((value) {
+    await ProfileRepo.getProfileDetails().then((value) {
+      log("error hered$value");
       if (value != null) {
+        log("image ${value.data?.image}");
         profileResponseModel = value;
         emit(ProfileLoadedState());
       } else {
         emit(ProfileErrorState());
       }
+    }).catchError((e) {
+      log(e.toString());
     });
   }
 }

@@ -1,4 +1,4 @@
-#Fri Sep 20 14:52:39 EEST 2024
+#Mon Sep 30 22:49:34 EEST 2024
 base.0=D\:\\Flutter projects\\bokiaa\\build\\app\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 base.1=D\:\\Flutter projects\\bokiaa\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
 base.2=D\:\\Flutter projects\\bokiaa\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\1\\classes.dex

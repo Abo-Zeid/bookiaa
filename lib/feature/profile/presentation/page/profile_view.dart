@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bokiaa/core/utils/appcolors.dart';
 import 'package:bokiaa/core/utils/text_style.dart';
 import 'package:bokiaa/feature/profile/presentation/bloc/profile_bloc.dart';
@@ -47,6 +49,7 @@ class ProfileView extends StatelessWidget {
               children: [
                 BlocBuilder<ProfileBloc, ProfileState>(
                     builder: (context, state) {
+                  log("State$state");
                   if (state is ProfileLoadedState) {
                     var detail =
                         context.read<ProfileBloc>().profileResponseModel?.data;
@@ -62,7 +65,7 @@ class ProfileView extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              detail?.name ?? "",
+                              detail?.name?.toUpperCase() ?? "",
                               style: AppTextStyle.getTtileTextStyle(context),
                             ),
                             Text(
@@ -77,11 +80,11 @@ class ProfileView extends StatelessWidget {
                         )
                       ],
                     );
-                  } else if(state is ProfileLoadingState) {
+                  } else {
                     return Center(
                         child: Lottie.asset("assets/images/loading.json",
                             width: 100, height: 100));
-                  }else return Text("Erorr");
+                  }
                 }),
                 const Gap(20),
                 Expanded(
