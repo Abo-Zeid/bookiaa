@@ -1,6 +1,6 @@
 import 'package:bokiaa/core/functions/dialogs.dart';
 import 'package:bokiaa/core/widgets/back_card_widget.dart';
-import 'package:bokiaa/core/widgets/nav_bar_widget.dart';
+import 'package:bokiaa/feature/home/presentation/page/nav_bar_widget.dart';
 import 'package:bokiaa/feature/auth/data/models/reguest/login_params.dart';
 import 'package:bokiaa/feature/auth/presentation/bloc/auth_bloc.dart';
 import 'package:bokiaa/feature/auth/presentation/bloc/auth_event.dart';

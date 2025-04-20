@@ -13,9 +13,7 @@ import 'package:gap/gap.dart';
 import 'package:lottie/lottie.dart';
 
 class BestSellerBooksWidget extends StatefulWidget {
-  const BestSellerBooksWidget({
-    super.key,
-  });
+  const BestSellerBooksWidget({super.key});
 
   @override
   State<BestSellerBooksWidget> createState() => _BestSellerBooksWidgetState();

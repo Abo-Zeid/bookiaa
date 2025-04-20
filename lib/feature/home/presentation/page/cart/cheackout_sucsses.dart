@@ -3,7 +3,7 @@ import 'package:bokiaa/core/functions/navigation.dart';
 import 'package:bokiaa/core/utils/appcolors.dart';
 import 'package:bokiaa/core/widgets/custom_button.dart';
 import 'package:bokiaa/core/utils/text_style.dart';
-import 'package:bokiaa/feature/home/presentation/page/home/home_view.dart';
+import 'package:bokiaa/feature/home/presentation/page/nav_bar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
@@ -39,7 +39,7 @@ class CheackoutSucsses extends StatelessWidget {
               CustomButton(
                   text: "Back To Home",
                   onPressed: () {
-                    pushReplacement(context, const HomeView());
+                    pushAndRemoveUntil(context, const NavBarWidget());
                   })
             ],
           ),

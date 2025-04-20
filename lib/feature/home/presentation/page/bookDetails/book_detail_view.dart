@@ -47,12 +47,14 @@ class BookDetailView extends StatelessWidget {
             } else if (state is AddToWishListloadingState ||
                 state is AddToCartloadingState) {
               showLoadingDialog(context);
+            } else if (state is AddToCartloadedState) {
+              Navigator.pop(context);
+              showeSuccesDialog(context);
             } else {
               Navigator.pop(context);
+              showeSuccesDialog(context);
 
-              showeErrorDialog(
-                context,
-              );
+              //showeErrorDialog(context);
             }
           },
           child: Center(
@@ -71,7 +73,8 @@ class BookDetailView extends StatelessWidget {
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(10)),
                               child: CachedNetworkImage(
-                                imageUrl: product?.image ?? "",
+                                imageUrl: product?.image ??
+                                    "assets/default_image.png", // Default image
                                 width: 180,
                                 fit: BoxFit.cover,
                                 errorWidget: (context, url, error) =>
@@ -82,20 +85,21 @@ class BookDetailView extends StatelessWidget {
                           const Gap(16),
                           Text(
                             textAlign: TextAlign.center,
-                            product?.name ?? "",
+                            product?.name ??
+                                "No Name Available", // Fallback text
                             style: AppTextStyle.getHeadlineTextStyle(context,
                                 fontSize: 28),
                           ),
                           const Gap(16),
                           Text(
-                            product?.category ?? "",
+                            product?.category ?? "No Category", // Fallback text
                             style: AppTextStyle.getSmallTextStyle(context,
                                 color: Appcolors.primaryColor),
                           ),
                           const Gap(16),
                           Text(
                             textAlign: TextAlign.justify,
-                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                            "Pain itself is something to be experienced with love; it is something that those who seek after pleasure must endure. For no one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires pain itself because it is pain, but occasionally circumstances occur in which toil and pain can procure great pleasure.",
                             style: AppTextStyle.getSmallTextStyle(
                               fontSize: 16,
                               context,
@@ -111,7 +115,7 @@ class BookDetailView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "\$${product?.price ?? ""}",
+                        "\$${product?.price ?? "N/A"}", // Fallback for price
                         style: AppTextStyle.getHeadlineTextStyle(context),
                       ),
                       const Gap(50),
@@ -121,7 +125,6 @@ class BookDetailView extends StatelessWidget {
                           onPressed: () {
                             context.read<HomeBloc>().add(
                                 AddToCartEvent(productId: product?.id ?? 0));
-                              
                           },
                           color: Appcolors.textColor,
                           height: 45,

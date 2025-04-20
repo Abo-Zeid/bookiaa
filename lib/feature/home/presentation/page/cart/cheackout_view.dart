@@ -7,118 +7,103 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class CheackoutView extends StatelessWidget {
-  const CheackoutView({super.key});
+  final double totalPrice;
+
+  const CheackoutView({super.key, required this.totalPrice});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          automaticallyImplyLeading: false,
-          title: Row(
-            children: [
-              Container(
-                width: 41,
-                height: 41,
-                padding: const EdgeInsets.only(right: 3),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: Appcolors.borderColor)),
-                child: IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(Icons.arrow_back_ios_rounded),
-                  iconSize: 20,
-                ),
+        automaticallyImplyLeading: false,
+        title: Row(
+          children: [
+            Container(
+              width: 41,
+              height: 41,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: Appcolors.borderColor),
               ),
-              const Spacer(),
-              Text(
-                "Checkout",
-                style: AppTextStyle.getTtileTextStyle(context),
+              child: IconButton(
+                onPressed: () => Navigator.pop(context),
+                icon: const Icon(Icons.arrow_back_ios_rounded, size: 20),
               ),
-              const Spacer(),
-              const Gap(41)
-            ],
-          )),
+            ),
+            const Spacer(),
+            Text(
+              "Checkout",
+              style: AppTextStyle.getTtileTextStyle(context),
+            ),
+            const Spacer(),
+            const SizedBox(width: 41),
+          ],
+        ),
+      ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(22.0),
-          child: Column(
-            children: [
-              Column(
+        padding: const EdgeInsets.all(22.0),
+        child: Column(
+          children: [
+            Form(
+              child: Column(
                 children: [
-                  TextFormField(
-                    decoration: InputDecoration(
-                      hintText: "Full Name",
-                      filled: true,
-                      fillColor: Appcolors.acsentColor,
-                    ),
-                  ),
+                  _buildField("Full Name"),
                   const Gap(10),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      hintText: "Email",
-                      filled: true,
-                      fillColor: Appcolors.acsentColor,
-                    ),
-                  ),
+                  _buildField("Email"),
                   const Gap(10),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      hintText: "Address",
-                      filled: true,
-                      fillColor: Appcolors.acsentColor,
-                    ),
-                  ),
+                  _buildField("Address"),
                   const Gap(10),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      hintText: "Phone",
-                      filled: true,
-                      fillColor: Appcolors.acsentColor,
-                    ),
-                  ),
+                  _buildField("Phone"),
                   const Gap(10),
-                  TextFormField(
-                    maxLines: 4,
-                    decoration: InputDecoration(
-                      hintText: "Note",
-                      filled: true,
-                      fillColor: Appcolors.acsentColor,
-                    ),
-                  ),
+                  _buildField("Note", maxLines: 4),
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Row(
+            ),
+            const Gap(20),
+            Row(
+              children: [
+                Text(
+                  "Total : ",
+                  style: AppTextStyle.getTtileTextStyle(
+                    context,
+                    color: Appcolors.greyColor,
+                  ),
+                ),
+                const Spacer(),
+                Row(
                   children: [
+                    const Icon(Icons.attach_money_sharp),
                     Text(
-                      "Total : ",
-                      style: AppTextStyle.getTtileTextStyle(context,
-                          color: Appcolors.greyColor),
+                      totalPrice.toStringAsFixed(2),
+                      style: AppTextStyle.getTtileTextStyle(context),
                     ),
-                    const Spacer(),
-                    Row(
-                      children: [
-                        const Icon(Icons.attach_money_sharp),
-                        Text(
-                          "95.00",
-                          style: AppTextStyle.getTtileTextStyle(context),
-                        )
-                      ],
-                    )
                   ],
                 ),
-              ),
-              CustomButton(
-                text: "Checkout",
-                onPressed: () {
-                  push(context, const CheackoutSucsses());
-                },
-              )
-            ],
-          ),
+              ],
+            ),
+            const Gap(25),
+            CustomButton(
+              text: "Checkout",
+              onPressed: () {
+                push(context, const CheackoutSucsses());
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildField(String hint, {int maxLines = 1}) {
+    return TextFormField(
+      maxLines: maxLines,
+      decoration: InputDecoration(
+        hintText: hint,
+        filled: true,
+        fillColor: Appcolors.acsentColor,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide.none,
         ),
       ),
     );

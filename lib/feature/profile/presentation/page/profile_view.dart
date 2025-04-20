@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:bokiaa/core/functions/sign_out.dart';
 import 'package:bokiaa/core/utils/appcolors.dart';
 import 'package:bokiaa/core/utils/text_style.dart';
 import 'package:bokiaa/feature/profile/presentation/bloc/profile_bloc.dart';
@@ -37,7 +38,11 @@ class ProfileView extends StatelessWidget {
                 style: AppTextStyle.getHeadlineTextStyle(context, fontSize: 24),
               ),
               const Spacer(),
-              SvgPicture.asset("assets/icons/exit.svg")
+              IconButton(
+                  onPressed: () {
+                    signOut(context);
+                  },
+                  icon: SvgPicture.asset("assets/icons/exit.svg"))
             ],
           ),
         ),
@@ -57,7 +62,8 @@ class ProfileView extends StatelessWidget {
                     return Row(
                       children: [
                         CircleAvatar(
-                          backgroundImage: NetworkImage(detail?.image ?? " "),
+                          backgroundImage: NetworkImage(
+                              "https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/rockcms/2023-10/231015-Yahya-Sinwar-Hamas-mb-0731-95501d.jpg"),
                           radius: 50,
                         ),
                         const Gap(13),

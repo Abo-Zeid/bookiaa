@@ -4,7 +4,7 @@ import 'package:bokiaa/core/constant/assets_icon.dart';
 import 'package:bokiaa/core/functions/navigation.dart';
 import 'package:bokiaa/core/services/local_storage.dart';
 import 'package:bokiaa/core/utils/text_style.dart';
-import 'package:bokiaa/core/widgets/nav_bar_widget.dart';
+import 'package:bokiaa/feature/home/presentation/page/nav_bar_widget.dart';
 import 'package:bokiaa/feature/intro/welcome_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';

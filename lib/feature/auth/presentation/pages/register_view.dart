@@ -5,7 +5,7 @@ import 'package:bokiaa/core/utils/appcolors.dart';
 import 'package:bokiaa/core/widgets/back_card_widget.dart';
 import 'package:bokiaa/core/widgets/custom_button.dart';
 import 'package:bokiaa/core/utils/text_style.dart';
-import 'package:bokiaa/core/widgets/nav_bar_widget.dart';
+import 'package:bokiaa/feature/home/presentation/page/nav_bar_widget.dart';
 import 'package:bokiaa/feature/auth/data/models/reguest/register_params.dart';
 import 'package:bokiaa/feature/auth/presentation/bloc/auth_bloc.dart';
 import 'package:bokiaa/feature/auth/presentation/bloc/auth_event.dart';
@@ -37,7 +37,7 @@ class _RegisterViewState extends State<RegisterView> {
     return BlocConsumer<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state is RegisterSuccesState) {
-          pushReplacement(context, const NavBarWidget());
+          pushAndRemoveUntil(context, const NavBarWidget());
         } else if (state is RegisterErrorState) {
           showeErrorDialog(context);
         }

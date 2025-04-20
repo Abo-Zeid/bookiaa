@@ -21,6 +21,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<GetCartEvent>(getCart);
     on<AddToCartEvent>(addToCart);
     on<RemoveFormCartEvent>(removeFromCart);
+    on<UpdateCartItemEvent>;
   }
   BestSellerResponseModel? bestSellerResponseModel;
   HomeBannerResponseModel? homeBannerResponseModel;
@@ -108,9 +109,16 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   Future<void> addToCart(AddToCartEvent event, Emitter<HomeState> emit) async {
     emit(AddToCartloadingState());
-    await HomeRepo.addToCart(productId: event.productId).then((value) {
+    await HomeRepo.addToCart(productId: event.productId).then((value) async {
       if (value) {
-        emit(AddToCartloadedState());
+        await HomeRepo.getCart().then((cartValue) {
+          if (cartValue != null) {
+            cartResponseModel = cartValue;
+            emit(ShowCartloadedState());
+          } else {
+            emit(HomeErrorState());
+          }
+        });
       } else {
         emit(HomeErrorState());
       }
@@ -128,4 +136,5 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       }
     });
   }
+  
 }
